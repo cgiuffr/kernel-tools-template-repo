@@ -112,7 +112,7 @@ llvm::PassPluginLibraryInfo getTemplatePassPluginInfo() {
           [](PassBuilder &PB) {
             PB.registerOptimizerLastEPCallback(
                 [](llvm::ModulePassManager &PM,
-                  llvm::PassBuilder::OptimizationLevel Level) {
+                  OptimizationLevel Level) {
                 PM.addPass(TemplatePass());
                 });
             PB.registerPipelineParsingCallback(

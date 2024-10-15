@@ -7,7 +7,8 @@ if(NOT DEFINED ENV{KERNEL})
   message(FATAL_ERROR "$KERNEL is not defined")
 endif()
 
-SET (CMAKE_C_FLAGS " -nostdinc -I$ENV{KERNEL}/arch/x86/include -I$ENV{KERNEL}/arch/x86/include/generated -I$ENV{KERNEL}/include -I$ENV{KERNEL}/arch/x86/include/uapi -I$ENV{KERNEL}/arch/x86/include/generated/uapi -I$ENV{KERNEL}/include/uapi -I$ENV{KERNEL}/include/generated/uapi -include $ENV{KERNEL}/include/linux/kconfig.h -include $ENV{KERNEL}/include/linux/compiler_types.h -D__KERNEL__")
+SET (CMAKE_C_FLAGS " -flto -fshort-wchar -nostdinc -I$ENV{KERNEL}/arch/x86/include -I$ENV{KERNEL}/arch/x86/include/generated -I$ENV{KERNEL}/include -I$ENV{KERNEL}/arch/x86/include/uapi -I$ENV{KERNEL}/arch/x86/include/generated/uapi -I$ENV{KERNEL}/include/uapi -I$ENV{KERNEL}/include/generated/uapi -include $ENV{KERNEL}/include/linux/kconfig.h -include $ENV{KERNEL}/include/linux/compiler_types.h -D__KERNEL__")
+set(CMAKE_AR ${CMAKE_SOURCE_DIR}/thinar.sh)
 
 include_directories($ENV{KERNEL}/arch/x86/include)
 include_directories($ENV{KERNEL}/arch/x86/include/generated)
